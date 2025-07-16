@@ -92,7 +92,7 @@ class WinzyPlugin:
                 pdf, pages, crop_rects, args.output_folder
             )
             outfile = os.path.join(
-                args.output_folder, f"pdf-{os.path.basename(pdf)}.pdf"
+                args.output_folder, f"pdf-{os.path.basename(pdf)}"
             )
             create_pdf_file(pngfiles, outfile)
             print(f"created {outfile}")
