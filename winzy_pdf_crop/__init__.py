@@ -91,9 +91,7 @@ class WinzyPlugin:
             pngfiles = extract_region_from_pdf(
                 pdf, pages, crop_rects, args.output_folder
             )
-            outfile = os.path.join(
-                args.output_folder, f"pdf-{os.path.basename(pdf)}"
-            )
+            outfile = os.path.join(args.output_folder, f"pdf-{os.path.basename(pdf)}")
             create_pdf_file(pngfiles, outfile)
             print(f"created {outfile}")
 
