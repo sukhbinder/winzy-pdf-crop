@@ -59,6 +59,14 @@ def create_parser(subparser):
         help="Folder to save output PNGs (default: /tmp)",
     )
 
+    parser.add_argument(
+        "-hh",
+        "--height",
+        default=None,
+        type=int,
+        help="Height to crop (default: None)",
+    )
+
     return parser
 
 
@@ -81,9 +89,15 @@ class WinzyPlugin:
         else:
             # Generate random y1 values to vary the crop region vertically
             crop_rects = []
-            for _ in range(1):  # generate 3 different regions by default
+            height = args.height
+            if height is not None:
+                num = 3
+            else:
+                num = 1
+            for _ in range(num):  # generate 3 different regions by default
                 y0 = random.randint(70, 400)
-                height = random.randint(200, 400)
+                if height is None:
+                    height = random.randint(200, 400)
                 y1 = y0 + height
                 crop_rects.append([50, y0, 800, y1])
 
